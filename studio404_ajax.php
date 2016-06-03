@@ -27,7 +27,7 @@ class studio404_ajax{
 		}
 	}	
 
-	public function method($type,$item){
+	public static function method($type,$item){
 		if($type=="POST" && isset($_POST[$item])){
 			return filter_input(INPUT_POST, $item);
 		}else if($type=="GET" && isset($_GET[$item])){

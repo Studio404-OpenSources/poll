@@ -85,7 +85,7 @@ class studio404_poll extends studio404_ajax{
 
 	private function makeFrontEnd(){
 		$out = '';
-		if(!$this->method("GET","ajax")){
+		if(!studio404_ajax::method("GET","ajax")){
 			$out .= sprintf('<div id="%s">', $this->option['main_id']);
 		}
 		$out .= sprintf(
@@ -153,7 +153,7 @@ class studio404_poll extends studio404_ajax{
 		);
 
 		$out .= '</div>'; 
-		if(!$this->method("GET","ajax")){
+		if(!studio404_ajax::method("GET","ajax")){
 			$out .= '</div>';
 		}
 		return $out;
