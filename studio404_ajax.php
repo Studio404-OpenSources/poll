@@ -1,7 +1,7 @@
 <?php
 class studio404_ajax{
 	public $ip; 
-	public function reciver(){
+	public function receiver(){
 		if(
 			$this->method("GET","ajax") && 
 			$this->method("GET","qid") && 

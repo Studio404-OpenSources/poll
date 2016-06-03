@@ -1,7 +1,7 @@
 # Introduction
 The poll is fully customizable, It saves data in json files based on user's IP address.
 
-# Example
+# Example Url
 http://c.404.ge/ 
 
 # Installation
@@ -11,13 +11,11 @@ include("studio404_poll.php");
 
 if(
 	studio404_ajax::method("GET","ajax") && 
-	studio404_ajax::method("GET","qid") && 
-	studio404_ajax::method("GET","aid") && 
 	is_numeric(studio404_ajax::method("GET","qid")) && 
 	is_numeric(studio404_ajax::method("GET","aid"))
 ){
 	$studio404_ajax = new studio404_ajax(); 
-	$studio404_ajax->reciver(); 
+	$studio404_ajax->receiver(); 
 }
 
 $main_options = array(

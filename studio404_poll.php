@@ -75,12 +75,18 @@ class studio404_poll extends studio404_ajax{
 			}
 
 			$this->error[] = sprintf(
-				"<b>%s</b> დირექტორიას სასურველია ჰქონდეს 0755 ან 0775 ან 0777 ნებართვა !", 
+				"<b>%s</b> დირექტორიას სასურველია ჰქონდეს 0755 / 0775 / 0777 ნებართვა !", 
 				$this->mainoptions['temp_path']
 			);	
 		}
-		$this->error[] = "გთხოვთ გადაამოწმოთ \$option ცვლადი !";
+		$this->error[] = "გთხოვთ გადაამოწმოთ \$main_options ცვლადი !";
 		return false;
+	}
+
+	private function random($length)
+	{
+		$bytes = openssl_random_pseudo_bytes($length * 2);
+		return substr(str_replace(array('/', '+', '='), '', base64_encode($bytes)), 0, $length);
 	}
 
 	private function makeFrontEnd(){
@@ -191,7 +197,6 @@ class studio404_poll extends studio404_ajax{
 	}	
 
 	private function countAnswers($returnN){
-		$answersNumber = count($this->mainoptions['poll_answers']);
 		$pollFolder = sprintf(
 			"%squestion%s/", 
 			$this->mainoptions['temp_path'], 
@@ -206,9 +211,8 @@ class studio404_poll extends studio404_ajax{
 				$num[] = $f['answer_id']; 
 			}
 		}
-		$valCount = array_count_values($num); // 2 - 2
-		$allVals = count($num); // 4
-		$x = 1;
+		$valCount = array_count_values($num); 
+		$allVals = count($num); 
 		
 		for($y=1; $y <= count($this->mainoptions['poll_answers']); $y++){
 			if(!empty($valCount[$y])){
