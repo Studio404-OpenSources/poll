@@ -1,6 +1,8 @@
 # Introduction
 The poll is fully customizable, It saves data in json file based on user's IP addreess.
 
+# Example
+http://c.404.ge/ 
 
 # Installation
 ```php 
