@@ -10,9 +10,11 @@ include("studio404_ajax.php");
 include("studio404_poll.php"); 
 
 if(
-	isset($_GET['ajax'],$_GET['qid'],$_GET['aid']) && 
-	is_numeric($_GET['qid']) && 
-	is_numeric($_GET['aid'])
+	studio404_ajax::method("GET","ajax") && 
+	studio404_ajax::method("GET","qid") && 
+	studio404_ajax::method("GET","aid") && 
+	is_numeric(studio404_ajax::method("GET","qid")) && 
+	is_numeric(studio404_ajax::method("GET","aid"))
 ){
 	$studio404_ajax = new studio404_ajax(); 
 	$studio404_ajax->reciver(); 
