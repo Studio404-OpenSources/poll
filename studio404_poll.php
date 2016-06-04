@@ -35,6 +35,12 @@ class studio404_poll extends studio404_ajax{
 					), /* question styling */
 			"poll_answers"=>array(
 				"css"=>array(
+					"svgbox"=>array(
+						"margin"=>"0 10px",
+						"width"=>"-webkit-calc(100% - 20px)",
+						"width"=>"-moz-calc(100% - 20px)",
+						"width"=>"calc(100% - 20px)"
+					),
 					"svg"=>array(
 						"width"=>"calc(100% - 20px)", 
 						"height"=>"25px", 
@@ -114,12 +120,17 @@ class studio404_poll extends studio404_ajax{
 			$this->mainoptions['poll_question']
 		); 
 
+		$out .= sprintf(
+			'<div id="svg-box%s" style="%s">', 
+			$this->mainoptions['poll_id'], 
+			$this->arrayToStyle($this->option['poll_answers']['css']['svgbox'])
+		);
 		$x = 1;		
 		foreach ($this->mainoptions['poll_answers'] as $t) {
 			$persentString = $this->countAnswers($x)."%";
 			$out .= sprintf(
 				'<svg style="%s" onclick="makeavote(%s,%s)">
-				<rect height="25" style="%s" />
+				<rect height="25" width="%s" style="%s" />
 				<rect width="%s" height="25" style="%s" />
 				<text x="10" y="18" style="%s">%s %s</text>
 				</svg>
@@ -127,6 +138,7 @@ class studio404_poll extends studio404_ajax{
 				$this->arrayToStyle($this->option['poll_answers']['css']['svg']), 
 				$this->mainoptions['poll_id'], 
 				$x,
+				"100%", 
 				$this->arrayToStyle($this->option['poll_answers']['css']['rectbox']),
 				$persentString, 
 				$this->arrayToStyle($this->option['poll_answers']['css']['rectanswer']), 
@@ -135,7 +147,9 @@ class studio404_poll extends studio404_ajax{
 				$persentString
 			); 
 			$x++;
-		} 
+		}  
+		$out .= '</div>';
+
 		
 		$out .= sprintf(
 			'<script> 
