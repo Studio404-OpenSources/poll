@@ -158,8 +158,7 @@ class studio404_poll extends studio404_ajax{
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					if (xhttp.readyState == 4 && xhttp.status == 200) {
-						console.log(xhttp.responseText);
-						document.getElementById("%s").innerHTML = xhttp.responseText; 
+						location.reload(); 
 					}
 				};
 				xhttp.open("GET", "index.php?ajax=true&qid="+q+"&aid="+a+"&p=%s", true);
@@ -168,7 +167,6 @@ class studio404_poll extends studio404_ajax{
 			</script>', 
 			$this->option['main_id'], 
 			$this->mainoptions['please_wait'], 
-			$this->option['main_id'], 
 			$this->mainoptions['temp_path']
 		);
 
