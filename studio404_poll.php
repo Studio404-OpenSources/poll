@@ -89,12 +89,6 @@ class studio404_poll extends studio404_ajax{
 		return false;
 	}
 
-	private function random($length)
-	{
-		$bytes = openssl_random_pseudo_bytes($length * 2);
-		return substr(str_replace(array('/', '+', '='), '', base64_encode($bytes)), 0, $length);
-	}
-
 	private function makeFrontEnd(){
 		$out = '';
 		if(!studio404_ajax::method("GET","ajax")){
