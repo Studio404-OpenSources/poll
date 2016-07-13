@@ -1,4 +1,4 @@
-<?php
+<?php if(!defined("DIR")){ exit(); }
 class studio404_ajax{
 	public $ip; 
 	public function receiver(){
