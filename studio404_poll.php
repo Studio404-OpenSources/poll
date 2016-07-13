@@ -1,4 +1,4 @@
-<?php
+<?php if(!defined("DIR")){ exit(); }
 class studio404_poll extends studio404_ajax{
 	public $error = array();
 
