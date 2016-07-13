@@ -6,6 +6,7 @@ http://c.404.ge/
 
 # Installation
 ```php 
+define("DIR", __DIR__);
 include("studio404_ajax.php"); 
 include("studio404_poll.php"); 
 
