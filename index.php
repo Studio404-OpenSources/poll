@@ -1,6 +1,6 @@
 <?php
 header("Content-type: text/html; charset=utf-8"); 
-
+define("DIR", __DIR__);
 include("studio404_ajax.php"); 
 include("studio404_poll.php"); 
 
